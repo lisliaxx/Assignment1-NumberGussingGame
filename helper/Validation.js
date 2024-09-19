@@ -8,5 +8,5 @@ export const isValidEmail = (email) => {
 };
 
 export const isValidPhoneNumber = (phoneNumber) => {
-    return phoneNumber.trim().length === 10 && /^\d+$/.test(phoneNumber);
+    return phoneNumber.trim().length === 10 && !['0', '1'].includes(phoneNumber[9]);
 };

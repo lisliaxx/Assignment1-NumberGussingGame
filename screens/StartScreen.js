@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { View, Text, StyleSheet, Alert } from "react-native";
 import Button from '../components/Button';
 import Input from '../components/Input';
@@ -7,19 +7,28 @@ import Checkbox from 'expo-checkbox';
 import {Colors} from '../helper/Colors';
 import {isValidName, isValidEmail, isValidPhoneNumber} from '../helper/Validation';
 
-const StartScreen = ( { onRegister }) => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
+const StartScreen = ( { onRegister, initialValues }) => {
+    const [name, setName] = useState(initialValues?.name || '');
+    const [email, setEmail] = useState(initialValues?.email || '');
+    const [phoneNumber, setPhoneNumber] = useState(initialValues?.phoneNumber || '');
     const [isChecked, setIsChecked] = useState(false);
 
     const [nameError, setNameError] = useState('');
     const [emailError, setEmailError] = useState('');
     const [phoneNumberError, setPhoneNumberError] = useState('');
 
+    useEffect(() => {
+        if (initialValues) {
+            setName(initialValues.name);
+            setEmail(initialValues.email);
+            setPhoneNumber(initialValues.phoneNumber);
+            setIsChecked(false);
+        }
+    }, [initialValues]);
+
     const handleRegister = () => {
         if (isValidName(name) && isValidEmail(email) && isValidPhoneNumber(phoneNumber) && isChecked) {
-            onRegister(name, email, phoneNumber);
+            onRegister({ name, email, phoneNumber });
         } else {
             Alert.alert('Invalid Input', 'Please fill all the fields correctly');
         }

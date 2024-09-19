@@ -4,4 +4,5 @@ export const Colors = {
     background: '#f8f8f8',
     text: '#333',
     error: '#f00',
+    modalBackground: 'rgba(0, 0, 0, 0.5)',
 };

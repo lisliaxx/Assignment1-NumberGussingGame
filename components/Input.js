@@ -5,7 +5,7 @@ import { Colors } from "../helper/Colors";
 const Input = ( { value, onChangeText, placeholder, keyboardType, style}) => {
     return (
         <TextInput
-            style={{...styles.input, ...style}}
+            style={[styles.input, style]}
             value={value}
             onChangeText={onChangeText}
             placeholder={placeholder}
