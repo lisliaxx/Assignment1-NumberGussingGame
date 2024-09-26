@@ -22,13 +22,13 @@ const StartScreen = ( { onRegister, initialValues }) => {
             setName(initialValues.name);
             setEmail(initialValues.email);
             setPhoneNumber(initialValues.phoneNumber);
-            setIsChecked(false);
+            setIsChecked(initialValues.isChecked || false);
         }
     }, [initialValues]);
 
     const handleRegister = () => {
         if (isValidName(name) && isValidEmail(email) && isValidPhoneNumber(phoneNumber) && isChecked) {
-            onRegister({ name, email, phoneNumber });
+            onRegister({ name, email, phoneNumber, isChecked });
         } else {
             Alert.alert('Invalid Input', 'Please fill all the fields correctly');
         }
@@ -46,17 +46,17 @@ const StartScreen = ( { onRegister, initialValues }) => {
 
     const validateName = (text) => {
         setName(text);
-        setNameError(isValidName(text) ? '' : 'Invalid Name');
+        setNameError(isValidName(text) ? '' : 'Please enter a valid name');
     };
 
     const validateEmail = (text) => {
         setEmail(text);
-        setEmailError(isValidEmail(text) ? '' : 'Invalid Email');
+        setEmailError(isValidEmail(text) ? '' : 'Please enter a valid email');
     }
 
     const validatePhoneNumber = (text) => {
         setPhoneNumber(text);
-        setPhoneNumberError(isValidPhoneNumber(text) ? '' : 'Invalid Phone Number');
+        setPhoneNumberError(isValidPhoneNumber(text) ? '' : 'Please enter a valid Phone Number');
     }
 
     return (

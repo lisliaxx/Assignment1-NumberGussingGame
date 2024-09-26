@@ -24,7 +24,6 @@ export default function App() {
 
   const handleEdit = () => {
     setIsConfirmModalVisible(false);
-    setCurrentScreen('start');
   };
 
   const handleRestart = () => {
@@ -72,7 +71,6 @@ const styles = StyleSheet.create({
   },
   safeArea: {
     flex: 1,
-    
   },
   content: {
     flex: 1,

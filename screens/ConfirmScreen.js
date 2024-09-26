@@ -1,6 +1,5 @@
 import React from "react";
 import { View, Text, StyleSheet, Modal, TouchableOpacity } from "react-native";
-import { Colors } from "../helper/Colors";
 
 const ConfirmScreen = ({ visible, userInfo, onConfirm, onEdit }) => {
 

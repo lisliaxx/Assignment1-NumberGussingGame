@@ -1,5 +1,5 @@
 export const isValidName = (name) => {
-    return name.trim().length >= 1 && name.trim().length <= 50 && /^[a-zA-Z ]+$/.test(name);
+    return name.trim().length > 1 && name.trim().length <= 50 && /^[a-zA-Z ]+$/.test(name);
 };
 
 export const isValidEmail = (email) => {
